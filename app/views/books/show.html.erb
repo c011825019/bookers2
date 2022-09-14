@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/sidebar', user: @user, upload_book: @upload_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <p><%= image_tag @book.user.get_profile_image(100, 100) %></p>
+              <p><%= link_to @book.user.name, user_path(@book.user.id) %></p>
+            </td>
+            <td>
+              <p><%= @book.title %></p>
+            </td>
+            <td>
+              <p><%= @book.body %></p>
+            </td>
+            <td>
+              <% if @book.user == current_user %>
+                <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-success btn-sm" %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-danger btn-sm" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+  <% if @upload_book.errors.any? %>
+    <%= @upload_book.errors.count %> errors prohibited this obj from being saved:
+    <ul>
+      <% @upload_book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/sidebar', user: @user, upload_book: @upload_book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <%= render 'list', books: @books %>
+    </div>
+  </div>
+</div>
