@@ -1,7 +1,4 @@
 class BooksController < ApplicationController
-  def new
-    @upload_book = Book.new
-  end
 
   def create
     @upload_book = Book.new(book_params)
